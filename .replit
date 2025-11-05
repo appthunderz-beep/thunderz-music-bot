@@ -1,0 +1,1 @@
+run = "python3 -c \"import http.server, socketserver; socketserver.TCPServer(('',8080), http.server.SimpleHTTPRequestHandler).serve_forever()\" & python3 -u music_bot.py"
