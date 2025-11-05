@@ -30,6 +30,12 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 # ✅ Opus loader (USB friendly)
 import discord.opus as _opus
+# Replit/Linux first: libopus shared library
+try:
+    _opus.load_opus("libopus.so.0")
+except Exception:
+    pass
+
 def load_opus():
     dirs = [
         os.path.join(HERE, "bin"),
@@ -209,3 +215,4 @@ async def volume(inter, percent: app_commands.Range[int, 1, 200]):
 # ---------------------------------------
 if not TOKEN: raise RuntimeError("No DISCORD_TOKEN in .env")
 bot.run(TOKEN)
+
